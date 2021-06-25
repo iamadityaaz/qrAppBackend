@@ -1,9 +1,9 @@
 const DataSchema = require('../../model/v1/data');
 
 const add = async (req, res) => {
-  const { value } = req.body;
+  const { value, qrValue } = req.body;
 
-  if (!value) {
+  if (!value || !qrValue) {
     return res.json({
       error: true,
       message: 'Please send value',
@@ -11,7 +11,10 @@ const add = async (req, res) => {
   }
 
   try {
-    const data = new DataSchema({ inputString: value }).save();
+    const data = new DataSchema({
+      inputString: value,
+      qrValue: qrValue,
+    }).save();
 
     if (data) {
       return res.json({

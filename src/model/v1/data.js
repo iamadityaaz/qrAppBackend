@@ -7,6 +7,10 @@ const DataSchema = new Schema(
       type: String,
       required: true,
     },
+    qrValue: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
